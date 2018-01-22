@@ -1,5 +1,6 @@
 import { message } from "antd"
 import axios from "axios"
+import { appStore } from "../routers"
 
 /**
  * get 请求方法
@@ -10,10 +11,18 @@ import axios from "axios"
  * @returns
  */
 export function httpGet(url: string, config: object = {}) {
-  return axios.get(url, { ...config }).catch(e => {
-    const { status, statusText } = e.response
-    message.error(`${status}  ${statusText}`)
-  })
+  appStore.setLoading(true)
+  return axios
+    .get(url, { ...config })
+    .catch(e => {
+      appStore.setLoading(false)
+      const { status, statusText } = e.response
+      message.error(`${status}  ${statusText}`)
+    })
+    .then(res => {
+      appStore.setLoading(false)
+      return res
+    })
 }
 /**
  * post 请求方法

@@ -18,7 +18,7 @@ const defaultTodos = [
 const history = createBrowserHistory()
 const todoStore = new TodoStore(defaultTodos)
 const routerStore = new RouterStore(history)
-const appStore = new AppStore()
+export const appStore = new AppStore()
 const rootStores = {
   [STORE_TODO]: todoStore,
   [STORE_ROUTER]: routerStore,
