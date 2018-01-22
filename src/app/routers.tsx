@@ -6,6 +6,7 @@ import { STORE_APP, STORE_ROUTER, STORE_TODO } from "./constants/stores"
 import { Root } from "./layouts/Root"
 import { TodoModel } from "./models/TodoModel"
 import { AppStore, RouterStore, TodoStore } from "./stores"
+import { loadComponent } from "./utils/loadComponent"
 import { loadComponentWithSidebar } from "./utils/loadComponentWithSidebar"
 
 // default fixtures for TodoStore
@@ -50,7 +51,7 @@ export default class App extends React.Component {
                 )}
               />
               <Route
-                component={loadComponentWithSidebar(() =>
+                component={loadComponent(() =>
                   import("./components/Common/NotFound").then(
                     (module: any) => module.default
                   )

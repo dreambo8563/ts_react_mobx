@@ -34,10 +34,18 @@ export function httpGet(url: string, config: object = {}) {
  * @returns
  */
 export function httpPost(url: string, data: object = {}, config: object = {}) {
-  return axios.post(url, data, { ...config }).catch(e => {
-    const { status, statusText } = e.response
-    message.error(`${status}  ${statusText}`)
-  })
+  appStore.setLoading(true)
+  return axios
+    .post(url, data, { ...config })
+    .catch(e => {
+      appStore.setLoading(false)
+      const { status, statusText } = e.response
+      message.error(`${status}  ${statusText}`)
+    })
+    .then(res => {
+      appStore.setLoading(false)
+      return res
+    })
 }
 /**
  * 并发请求方法

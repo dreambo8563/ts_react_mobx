@@ -1,4 +1,4 @@
-import { Spin } from "antd"
+import { Row, Spin } from "antd"
 import { Icon, Layout, Menu } from "antd"
 import { inject, observer } from "mobx-react"
 import * as React from "react"
@@ -15,8 +15,9 @@ export interface SidebarLayoutProps {}
 
 export interface SidebarLayoutState {
   collapsed: boolean
-  path: string
+  // path: string
   openKeys: string[]
+  selectedKeys: string[]
 }
 @inject(STORE_APP, STORE_ROUTER)
 @observer
@@ -24,13 +25,13 @@ export class SidebarLayout extends React.Component<
   SidebarLayoutProps,
   SidebarLayoutState
 > {
-  public rootSubmenuKeys = ["new-path", "sub2", "sub4"]
+  public rootSubmenuKeys = ["sales", "sub2", "sub4"]
   constructor(props) {
     super(props)
     this.state = {
       collapsed: false,
-      openKeys: ["sub1"],
-      path: ""
+      openKeys: ["sub2"],
+      selectedKeys: []
     }
   }
   public toggle = () => {
@@ -43,9 +44,11 @@ export class SidebarLayout extends React.Component<
   }
   public componentDidMount() {
     const router = this.props[STORE_ROUTER] as RouterStore
+    const arr = router.location.pathname.split("/")
+
     this.setState({
-      path: router.location.pathname,
-      openKeys: [router.location.pathname]
+      openKeys: [arr[1] || ""],
+      selectedKeys: [arr[2] || ""]
     })
   }
   public onOpenChange = openKeys => {
@@ -63,20 +66,26 @@ export class SidebarLayout extends React.Component<
 
   public render() {
     const { children } = this.props
-    const { loading } = this.props[STORE_APP]
-    const { path } = this.state
+    const { loading, title } = this.props[STORE_APP]
+    const { openKeys, selectedKeys } = this.state
     return (
       <div className={s.pageFrame}>
         <Layout className={s.pageFrame}>
           <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" />
-            <Menu theme="dark" mode="inline">
+            <Menu
+              selectedKeys={selectedKeys}
+              onOpenChange={this.onOpenChange}
+              openKeys={openKeys}
+              theme="dark"
+              mode="inline"
+            >
               <SubMenu
-                key={`new-path`}
+                key={`sales`}
                 title={
                   <span>
                     <Icon type="mail" />
-                    <span>Navigation One</span>
+                    <span>Sales System</span>
                   </span>
                 }
               >
@@ -86,7 +95,7 @@ export class SidebarLayout extends React.Component<
                 <Menu.Item key="2">
                   <Link to="/xxx">xxx</Link>
                 </Menu.Item>
-                <Menu.Item key="3">
+                <Menu.Item key="orders">
                   <Link to="/sales/orders/list">orders list</Link>
                 </Menu.Item>
                 <Menu.Item key="4">Option 4</Menu.Item>
@@ -125,11 +134,14 @@ export class SidebarLayout extends React.Component<
           </Sider>
           <Layout>
             <Header style={{ background: "#fff", padding: 0 }}>
-              <Icon
-                className="trigger"
-                type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-                onClick={this.toggle}
-              />
+              <Row gutter={24} align="middle" type="flex">
+                <Icon
+                  className="trigger"
+                  type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+                  onClick={this.toggle}
+                />
+                <h2>{title}</h2>
+              </Row>
             </Header>
             <Content
               style={{

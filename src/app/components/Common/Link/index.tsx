@@ -1,4 +1,3 @@
-import * as classNames from "classnames"
 import { inject, observer } from "mobx-react"
 import * as React from "react"
 import { STORE_ROUTER } from "../../../constants/stores"

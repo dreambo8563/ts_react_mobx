@@ -1,11 +1,14 @@
-import { FormComponentProps } from "_antd@3.1.3@antd/lib/form/Form"
 import { Button, Col, Form, Icon, Input, Row } from "antd"
 import { Divider, Table } from "antd"
+import { FormComponentProps } from "antd/lib/form/Form"
+import { TableComponents, TableProps } from "antd/lib/table"
 import { inject, observer } from "mobx-react"
 import * as React from "react"
 import { RouteComponentProps, RouterProps } from "react-router"
+import { STORE_APP } from "../../../../constants/stores"
 import { httpAll, httpGet } from "../../../../utils/http"
 import * as style from "./style.css"
+import { AppStore } from "../../../../stores/index"
 const FormItem = Form.Item
 
 export interface TestProps extends FormComponentProps, RouterProps {}
@@ -19,8 +22,7 @@ export interface TestState {
   }>
 }
 
-// @inject(STORE_TODO, STORE_ROUTER)
-
+@inject(STORE_APP)
 @observer
 class Test extends React.Component<TestProps, TestState> {
   constructor(props: TestProps, context: any) {
@@ -29,7 +31,9 @@ class Test extends React.Component<TestProps, TestState> {
       data: []
     }
   }
-  public componentDidMount() {
+  public componentWillMount() {
+    const app = this.props[STORE_APP] as AppStore
+    app.setTitle("销售列表")
     httpAll(
       (a, b) => {
         console.log(a, b)
@@ -37,6 +41,11 @@ class Test extends React.Component<TestProps, TestState> {
       httpGet("/test/1.json"),
       httpGet("http://jsonplaceholder.typicode.com/posts/2")
     )
+  }
+  public componentDidMount() {
+    const table = this.refs.table as Table<any>
+    console.log("用ref 控制查看子组件,可以代用子组件方法")
+    console.log(table.columns)
   }
   public onSubmit = e => {
     e.preventDefault()
@@ -163,7 +172,7 @@ class Test extends React.Component<TestProps, TestState> {
           </Row>
         </Form>
         <br />
-        <Table columns={columns} dataSource={data} />
+        <Table ref="table" columns={columns} dataSource={data} />
       </div>
     )
   }

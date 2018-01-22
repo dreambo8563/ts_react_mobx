@@ -102,7 +102,9 @@ module.exports = function() {
               "react-dom",
               "mobx",
               "mobx-react",
-              "mobx-react-router"
+              "mobx-react-router",
+              "antd",
+              "axios"
             ]
           },
           {
