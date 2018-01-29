@@ -52,6 +52,14 @@ export default class App extends React.Component {
                 )}
               />
               <Route
+                path="/courses/subscribe/list"
+                component={loadComponentWithSidebar(() =>
+                  import("./containers/Courses/Subscribe/List").then(
+                    (module: any) => module.default
+                  )
+                )}
+              />
+              <Route
                 component={loadComponent(() =>
                   import("./components/Common/NotFound").then(
                     (module: any) => module.default

@@ -2,17 +2,17 @@ import { inject, observer } from "mobx-react"
 import * as React from "react"
 
 import { STORE_ROUTER } from "../../../constants/stores"
-import RouterStore from "../../../stores/RouterStore"
+import { RouterStore } from "../../../stores"
 
-export interface LinkState {
+export interface LinkProps {
   to: string
 }
 
 export interface LinkState {}
 @inject(STORE_ROUTER)
 @observer
-export class Link extends React.Component<LinkState, LinkState> {
-  constructor(props?: LinkState, context?: any) {
+export class Link extends React.Component<LinkProps, LinkState> {
+  constructor(props?: LinkProps, context?: any) {
     super(props, context)
   }
   public render() {
