@@ -1,6 +1,7 @@
 import { Button } from "antd"
-import { inject, observer } from "mobx-react"
+import { observer } from "mobx-react"
 import * as React from "react"
+
 // 如果需要用到css
 // import * as style from "./style.css"
 

@@ -1,4 +1,4 @@
-import { action, autorun, computed, observable } from "mobx"
+import { action, autorun, observable } from "mobx"
 
 export class AppStore {
   public loadingChange = autorun(() => {

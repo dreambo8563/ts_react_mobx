@@ -2,6 +2,7 @@ import { createBrowserHistory } from "history"
 import { Provider } from "mobx-react"
 import * as React from "react"
 import { Redirect, Route, Router, Switch } from "react-router"
+
 import { STORE_APP, STORE_ROUTER, STORE_TODO } from "./constants/stores"
 import { Root } from "./layouts/Root"
 import { TodoModel } from "./models/TodoModel"

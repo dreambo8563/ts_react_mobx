@@ -1,5 +1,6 @@
 import { message } from "antd"
 import axios from "axios"
+
 import { appStore } from "../routers"
 
 /**
@@ -16,7 +17,10 @@ export function httpGet(url: string, config: object = {}) {
     .get(url, { ...config })
     .catch(e => {
       appStore.setLoading(false)
-      const { status, statusText } = e.response
+      const { status, statusText } = e.response || {
+        status: "unknown",
+        statusText: "系统错误"
+      }
       message.error(`${status}  ${statusText}`)
     })
     .then(res => {
@@ -39,7 +43,10 @@ export function httpPost(url: string, data: object = {}, config: object = {}) {
     .post(url, data, { ...config })
     .catch(e => {
       appStore.setLoading(false)
-      const { status, statusText } = e.response
+      const { status, statusText } = e.response || {
+        status: "Unknown",
+        statusText: "系统错误"
+      }
       message.error(`${status}  ${statusText}`)
     })
     .then(res => {

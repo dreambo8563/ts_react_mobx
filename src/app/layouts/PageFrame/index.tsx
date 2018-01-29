@@ -1,8 +1,7 @@
 import { Button } from "antd"
-import { inject, observer } from "mobx-react"
+import { observer } from "mobx-react"
 import * as React from "react"
 import { RouteComponentProps } from "react-router"
-import * as style from "./style.css"
 
 export interface TestProps extends RouteComponentProps<any> {}
 

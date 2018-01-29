@@ -2,10 +2,9 @@ import { Row, Spin } from "antd"
 import { Icon, Layout, Menu } from "antd"
 import { inject, observer } from "mobx-react"
 import * as React from "react"
-import { RouteComponentProps, RouterProps } from "react-router"
+
 import Link from "../../components/Common/Link"
 import { STORE_APP, STORE_ROUTER } from "../../constants/stores"
-import { AppStore } from "../../stores/index"
 import RouterStore from "../../stores/RouterStore"
 import s from "./style.css"
 

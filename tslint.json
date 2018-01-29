@@ -3,7 +3,6 @@
   "extends": ["tslint:recommended"],
   "jsRules": {},
   "rules": {
-    "no-unused-variable": true,
     "semicolon": [true, "never"],
     "interface-name": [true, "never-prefix"],
     "no-empty-interface": false,
