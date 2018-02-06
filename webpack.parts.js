@@ -28,7 +28,7 @@ exports.devServer = function({ src, host, port }) {
       compress: true,
       proxy: {
         "/stereo": "http://stereo-dev.fenbeijinfu.com",
-        "/test": "http://localhost:8887"
+        "/api": "http://localhost:8192"
       },
       // Parse host and port from env to allow customization.
       //

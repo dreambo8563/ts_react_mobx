@@ -97,7 +97,9 @@ export class SidebarLayout extends React.Component<
                 <Menu.Item key="orders">
                   <Link to="/sales/orders/list">orders list</Link>
                 </Menu.Item>
-                <Menu.Item key="4">Option 4</Menu.Item>
+                <Menu.Item key="4">
+                  <Link to="/courses/subscribe/list">Class Management</Link>
+                </Menu.Item>
               </SubMenu>
               <SubMenu
                 key="sub2"
@@ -146,7 +148,6 @@ export class SidebarLayout extends React.Component<
               style={{
                 background: "#fff",
                 margin: "24px 16px",
-                minHeight: 280,
                 padding: 24
               }}
             >

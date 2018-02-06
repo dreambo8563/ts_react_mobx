@@ -1,4 +1,5 @@
 import "antd/dist/antd.less"
+import "../assets/less/font-awesome.less"
 import "../assets/main.css"
 
 import { LocaleProvider } from "antd"

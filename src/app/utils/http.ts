@@ -25,6 +25,10 @@ export function httpGet(url: string, config: object = {}) {
     })
     .then(res => {
       appStore.setLoading(false)
+      if (res && !res.data.success) {
+        message.error(` ${res.data.data}`)
+        return
+      }
       return res
     })
 }
@@ -64,4 +68,12 @@ export function httpPost(url: string, data: object = {}, config: object = {}) {
  */
 export function httpAll(cb, ...promises) {
   return axios.all(promises).then(axios.spread(cb))
+}
+
+export const qs = (url: string, querys: object) => {
+  let queryString = []
+  Object.keys(querys).forEach(key => {
+    queryString.push(`${key}=${encodeURIComponent(querys[key])}`)
+  })
+  return `${url}/?${queryString.join("&")}`
 }
