@@ -24,12 +24,12 @@ export class SidebarLayout extends React.Component<
   SidebarLayoutProps,
   SidebarLayoutState
 > {
-  public rootSubmenuKeys = ["sales", "courses", "sub4"]
+  public rootSubmenuKeys = ["sales", "courses", "examples"]
   constructor(props) {
     super(props)
     this.state = {
       collapsed: false,
-      openKeys: ["courses"],
+      openKeys: ["examples"],
       selectedKeys: []
     }
   }
@@ -89,14 +89,21 @@ export class SidebarLayout extends React.Component<
                   </span>
                 }
               >
-                <Menu.Item key="1">
-                  <Link to="/new-path">new path</Link>
-                </Menu.Item>
-                <Menu.Item key="2">
-                  <Link to="/xxx">xxx</Link>
-                </Menu.Item>
                 <Menu.Item key="orders">
                   <Link to="/sales/orders/list">orders list</Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key={`examples`}
+                title={
+                  <span>
+                    <Icon type="mail" />
+                    <span>Examples</span>
+                  </span>
+                }
+              >
+                <Menu.Item key="contacts">
+                  <Link to="/examples/contacts/list">Contacts</Link>
                 </Menu.Item>
               </SubMenu>
               <SubMenu
@@ -114,24 +121,6 @@ export class SidebarLayout extends React.Component<
                 <Menu.Item key="monitor">
                   <Link to="/courses/monitor/network">network monitor</Link>
                 </Menu.Item>
-                {/* <SubMenu key="sub3" title="Submenu">
-                  <Menu.Item key="7">Option 7</Menu.Item>
-                  <Menu.Item key="8">Option 8</Menu.Item>
-                </SubMenu> */}
-              </SubMenu>
-              <SubMenu
-                key="sub4"
-                title={
-                  <span>
-                    <Icon type="setting" />
-                    <span>Navigation Three</span>
-                  </span>
-                }
-              >
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>

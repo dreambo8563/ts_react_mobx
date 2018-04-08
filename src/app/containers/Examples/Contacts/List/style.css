@@ -1,0 +1,83 @@
+.wholeFrame {
+  width: 100%;
+  height: 100vh;
+  background: rgb(244, 248, 249);
+  padding: 20px;
+}
+.wholeFrame :global(th.ant-table-selection-column) {
+  background: rgb(244, 248, 249);
+  border-bottom-width: 0px;
+}
+.title {
+  color: rgb(118, 99, 238);
+  font-size: 32px;
+}
+
+.smallLable {
+  color: rgb(173, 188, 195);
+}
+
+.smallBlack {
+  color: rgb(37, 50, 56);
+}
+
+.headerHeight {
+  /* font-size: 32px; */
+  height: 48px;
+}
+.btnBG {
+  background-color: rgb(39, 169, 247);
+  color: white;
+  height: 48px;
+}
+
+.noBorder {
+  border: none;
+}
+.leftM8 {
+  margin-left: 8px;
+}
+
+.rightM8 {
+  margin-right: 8px;
+}
+
+.lightBlueBG {
+  background-color: rgb(221, 238, 249);
+}
+.fz20 {
+  font-size: 20px;
+}
+.selectedColor {
+  color: rgb(0, 163, 248);
+}
+.menuItemPad {
+  padding: 5px;
+}
+
+.columnHead {
+  color: rgb(121, 143, 156) !important;
+  font-weight: bold !important;
+  border-bottom-width: 0 !important;
+  background-color: rgb(244, 248, 249) !important;
+}
+
+.rowClass {
+  background-color: white;
+}
+.rowClass td {
+  border-width: 10px !important;
+  background-color: white !important;
+  border-color: rgb(244, 248, 249) !important;
+  font-weight: normal !important;
+}
+
+.avatar {
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.rowOperation {
+  font-size: 32px;
+  font-weight: bolder;
+}
