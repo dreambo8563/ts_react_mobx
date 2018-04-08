@@ -29,11 +29,11 @@ export default class AvailableLegends extends React.Component<
   public render() {
     return (
       <div>
-        <span className="label" style={{ backgroundColor: "#FF6600" }}>
-          <i className="fa fa-star" />
+        <span className="label bg-yellow">
+          <i className="fa fa-star bg-yellow b-r-3 f-color" />
         </span>&nbsp;双语小明显&nbsp;&nbsp;
-        <span className="label" style={{ backgroundColor: "#0099CC" }}>
-          <i className="fa fa-bold" />
+        <span className="label">
+          <i className="fa fa-bold bg-green b-r-3 f-color" />
         </span>&nbsp;0基础课老师&nbsp;&nbsp;
       </div>
     )

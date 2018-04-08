@@ -11,7 +11,7 @@ const isProduction = process.argv.indexOf("-p") >= 0
 
 const PATHS = {
   app: path.join(__dirname, "src"),
-  build: path.join(__dirname, "dist")
+  build: path.join(__dirname, '../',"tmp")
 }
 
 const common = merge([
@@ -32,14 +32,14 @@ const common = merge([
     plugins: [
       new HtmlWebpackPlugin({
         template: "template.html",
-        title: "SpaceX",
+        title: "Tools后台管理系统",
         minify: {
           collapseWhitespace: true,
           collapseBooleanAttributes: true,
           removeEmptyAttributes: true
         },
         appMountId: "app", // Generate #app where to mount
-        favicon: "favicon.ico",
+        favicon: "favicon.png",
         mobile: true, // Scale page on mobile
         inject: true // html-webpack-template requires this to work
       })
@@ -103,8 +103,9 @@ module.exports = function() {
               "mobx",
               "mobx-react",
               "mobx-react-router",
-              "antd",
-              "axios"
+              // "antd",
+              "axios",
+              "url-search-params-polyfill"
             ]
           },
           {

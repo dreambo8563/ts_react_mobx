@@ -5,6 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CleanWebpackPlugin = require("clean-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const CompressionPlugin = require("compression-webpack-plugin")
+const tsImportPluginFactory = require("ts-import-plugin")
 const cssnano = require("cssnano")
 const pkgPath = path.join(__dirname, "package.json")
 const pkg = require(pkgPath)
@@ -27,7 +28,12 @@ exports.devServer = function({ src, host, port }) {
       stats: "errors-only",
       compress: true,
       proxy: {
-        "/stereo": "http://stereo-dev.fenbeijinfu.com",
+        // "/api": {
+        //   target: "http://qa-tools-node.snaplingo.com",
+        //   bypass: function(req, res, proxyOptions) {
+        //     req.headers.host = "qa-tools-node.snaplingo.com"
+        //   }
+        // }
         "/api": "http://localhost:8192"
       },
       // Parse host and port from env to allow customization.
@@ -35,7 +41,7 @@ exports.devServer = function({ src, host, port }) {
       // If you use Vagrant or Cloud9, set host: options.host || '0.0.0.0';
       //
       // 0.0.0.0 is available to all network devices unlike default `localhost`.
-      host, // Defaults to `localhost`
+      host: "localhost", // Defaults to `localhost`
       port: 8000 // Defaults to 8080
     },
     // node: {
@@ -230,18 +236,54 @@ exports.loadTsx = function() {
       rules: [
         {
           test: /\.tsx?$/,
+          // use: isProduction
+          //   ? "awesome-typescript-loader"
+          //   : ["react-hot-loader/webpack", "awesome-typescript-loader"],
           use: isProduction
-            ? "awesome-typescript-loader"
-            : ["react-hot-loader/webpack", "awesome-typescript-loader"]
+            ? {
+                loader: "awesome-typescript-loader",
+                options: {
+                  getCustomTransformers: () => ({
+                    before: [
+                      tsImportPluginFactory({
+                        libraryName: "antd",
+                        libraryDirectory: "es",
+                        style: true
+                      })
+                    ]
+                  })
+                }
+              }
+            : [
+                { loader: "react-hot-loader/webpack" },
+                {
+                  loader: "awesome-typescript-loader",
+                  options: {
+                    getCustomTransformers: () => ({
+                      before: [
+                        tsImportPluginFactory({
+                          libraryName: "antd",
+                          libraryDirectory: "es",
+                          style: true
+                        })
+                      ]
+                    })
+                  }
+                }
+              ]
         }
       ]
     }
   }
 }
 
-exports.clean = function(path) {
+exports.clean = function(paths) {
   return {
-    plugins: [new CleanWebpackPlugin([path])]
+    plugins: [
+      new CleanWebpackPlugin([paths], {
+        root: path.resolve(paths, "../")
+      })
+    ]
   }
 }
 

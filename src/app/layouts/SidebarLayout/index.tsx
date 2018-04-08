@@ -24,12 +24,12 @@ export class SidebarLayout extends React.Component<
   SidebarLayoutProps,
   SidebarLayoutState
 > {
-  public rootSubmenuKeys = ["sales", "sub2", "sub4"]
+  public rootSubmenuKeys = ["sales", "courses", "sub4"]
   constructor(props) {
     super(props)
     this.state = {
       collapsed: false,
-      openKeys: ["sub2"],
+      openKeys: ["courses"],
       selectedKeys: []
     }
   }
@@ -63,6 +63,7 @@ export class SidebarLayout extends React.Component<
     }
   }
 
+  // hide nav bar when embed in iFrame
   public render() {
     const { children } = this.props
     const { loading, title } = this.props[STORE_APP]
@@ -97,12 +98,9 @@ export class SidebarLayout extends React.Component<
                 <Menu.Item key="orders">
                   <Link to="/sales/orders/list">orders list</Link>
                 </Menu.Item>
-                <Menu.Item key="4">
-                  <Link to="/courses/subscribe/list">Class Management</Link>
-                </Menu.Item>
               </SubMenu>
               <SubMenu
-                key="sub2"
+                key="courses"
                 title={
                   <span>
                     <Icon type="appstore" />
@@ -110,12 +108,16 @@ export class SidebarLayout extends React.Component<
                   </span>
                 }
               >
-                <Menu.Item key="5">Option 5</Menu.Item>
-                <Menu.Item key="6">Option 6</Menu.Item>
-                <SubMenu key="sub3" title="Submenu">
+                <Menu.Item key="subscribe">
+                  <Link to="/courses/subscribe/list">Class Management</Link>
+                </Menu.Item>
+                <Menu.Item key="monitor">
+                  <Link to="/courses/monitor/network">network monitor</Link>
+                </Menu.Item>
+                {/* <SubMenu key="sub3" title="Submenu">
                   <Menu.Item key="7">Option 7</Menu.Item>
                   <Menu.Item key="8">Option 8</Menu.Item>
-                </SubMenu>
+                </SubMenu> */}
               </SubMenu>
               <SubMenu
                 key="sub4"

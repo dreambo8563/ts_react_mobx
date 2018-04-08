@@ -30,42 +30,42 @@ export default class PreservedLegends extends React.Component<
     return (
       <div>
         <span className="label label-danger">
-          <i className="fa fa-exclamation-triangle" />
+          <i className="fa fa-exclamation-triangle bg-red b-r-3 f-color"  />
         </span>&nbsp;用户剩余课时不足&nbsp;&nbsp;
         <span className="label label-warning">
-          Demo
+          <i className="bg-orange b-r-3 f-color">Demo</i>
         </span>&nbsp;演示课&nbsp;&nbsp;
         <span className="label label-primary">
-          正式课
+          <i className="bg-blue-sky b-r-3 f-color">正式课</i>
         </span>&nbsp;已付费用户正式课&nbsp;&nbsp;
-        <span className="label" style={{ backgroundColor: "#009999" }}>
-          <i className="fa fa-tumblr" />
+        <span className="label">
+          <i className="fa fa-tumblr bg-sea-green b-r-3 f-color" />
         </span>&nbsp;临时课&nbsp;&nbsp;
         <span className="label label-success">
-          <i className="fa fa-adjust" />
+          <i className="fa fa-adjust bg-green b-r-3 f-color" />
         </span>&nbsp;请假空闲出来的老师&nbsp;&nbsp;
         <span className="label label-danger">
-          <i className="fa fa-ban" />
+          <i className="fa fa-ban bg-red b-r-3 f-color" />
         </span>&nbsp;学生请假/提前请假&nbsp;&nbsp;
-        <span className="label bg-blue">
+        <span className="label bg-blue bg-sea-green b-r-3 f-color">
           <i className="fa fa-ban" />
         </span>&nbsp;老师请假&nbsp;&nbsp;
-        <span className="label label-danger">
+        <span className="label label-danger bg-sea-green b-r-3 f-color">
           <i className="fa fa-user-times" />
         </span>&nbsp;不在工作时间&nbsp;&nbsp;
         <span className="label" style={{ backgroundColor: "#990033" }}>
-          <i className="fa fa-thumb-tack" />
+          <i className="fa fa-thumb-tack bg-sea-green b-r-3 f-color" />
         </span>&nbsp;占位课& nbsp;&nbsp;
-        <span className="label label-danger">
+        <span className="label label-danger bg-sea-green b-r-3 f-color">
           <i className="fa fa-minus-circle" />
         </span>&nbsp;本周课程被放弃&nbsp;&nbsp;
-        <span className="label" style={{ backgroundColor: "#996699" }}>
-          <i className="fa fa-tags" />
+        <span className="label">
+          <i className="fa fa-tags bg-purple b-r-3 f-color" />
         </span>&nbsp;以前是占位课&nbsp;&nbsp;
-        <i className="fa fa-user" />&nbsp;在线&nbsp;&nbsp;
-        <i className="fa fa-comment" />&nbsp;发言&nbsp; &nbsp;
-        <i className="fa fa-video-camera" />&nbsp;视频&nbsp;&nbsp;
-        <i className="fa fa-envira" /> & nbsp;新用户 & nbsp; & nbsp;
+        <i className="fa fa-user bg-green b-r-3 f-color" />&nbsp;在线&nbsp;&nbsp;
+        <i className="fa fa-comment bg-red b-r-3 f-color" />&nbsp;发言&nbsp; &nbsp;
+        <i className="fa fa-video-camera bg-orange b-r-3 f-color" />&nbsp;视频&nbsp;&nbsp;
+        <i className="fa fa-envira bg-blue-sky b-r-3 f-color" />&nbsp;新用户&nbsp;&nbsp;
       </div>
     )
   }

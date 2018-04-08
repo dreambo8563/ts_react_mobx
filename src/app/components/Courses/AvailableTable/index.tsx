@@ -1,40 +1,68 @@
-import { Button, Divider, Table } from "antd"
+import { Button, Divider, Popover, Table, Tag } from "antd"
 import { Pagination } from "antd"
-import { observer } from "mobx-react"
+import * as mobx from "mobx"
+import { inject, observer } from "mobx-react"
 import * as React from "react"
+import { STORE_AVAILABLELIST } from "../../../constants/stores"
+import { WeekEnum } from "../../../constants/text"
+import { AvailableListStore } from "../../../stores"
 
 // 如果需要用到css
 // import * as style from "./style.css"
 
 // 已预约可能table
 
-export interface AvailableTableProps {
-  dataSource: any[]
-  onSortChange: (sorter: object) => void
-}
+export interface AvailableTableProps {}
 
-export interface AvailableTableState {
-  dataSource: any[]
-  total: number
-  current: number
-}
+export interface AvailableTableState {}
 
 const columns = [
   {
     title: "Time for class",
-    dataIndex: "name",
-    key: "name"
+    key: "name",
+    render: (text, record) =>
+      `${WeekEnum[record.cn_week]} ${record.cn_start} - ${record.cn_end}`
   },
   {
     title: "TEACHER",
     sorter: true,
-    dataIndex: "age",
-    key: "age"
+    key: "age",
+    render: (text, record) => {
+      const content = <div>{record.tags}</div>
+      return (
+        <div>
+          <span>
+            {record.name}/{record.tid}
+          </span>{" "}
+          &nbsp;
+          {record.tags ? (
+            <Popover content={content}>
+              <Tag color="magenta">tags</Tag>
+            </Popover>
+          ) : (
+            ""
+          )}
+        </div>
+      )
+    }
   },
   {
     title: "INFO",
-    dataIndex: "address",
-    key: "address"
+    key: "address",
+    render: (text, record) => {
+      return (
+        <div>
+          {record.tDemo ? (
+            <Tag color="gold">demo</Tag>
+          ) : (
+            <Tag color="blue">正式课</Tag>
+          )}
+          {record.tDuty ? <Tag color="green">demo值班</Tag> : ""}
+          {record.tBilligual ? <Tag color="red">小明星</Tag> : ""}
+          {record.basis_tutor ? <Tag color="purple">B</Tag> : ""}
+        </div>
+      )
+    }
   },
   {
     title: "MANGE",
@@ -47,8 +75,7 @@ const columns = [
     )
   }
 ]
-// 如果要注入store
-// @inject(STORE_TODO, STORE_ROUTER)
+@inject(STORE_AVAILABLELIST)
 @observer
 export default class AvailableTable extends React.Component<
   AvailableTableProps,
@@ -56,57 +83,24 @@ export default class AvailableTable extends React.Component<
 > {
   constructor(props: AvailableTableProps, context: any) {
     super(props, context)
-    this.state = {
-      total: 100,
-      current: 1,
-      dataSource: props.dataSource
-    }
   }
-  public componentWillReceiveProps(nextProps) {
-    this.setState({
-      dataSource: nextProps.dataSource
-    })
-  }
-  /**
-   * 每页数量变化触发
-   *
-   * @memberof AvailableTable
-   */
   public onShowSizeChange = (current, pageSize) => {
-    console.log(current, pageSize)
-    this.setState({
-      current
-    })
+    const store = this.props[STORE_AVAILABLELIST] as AvailableListStore
+    const { currentWeek } = store
+    store.setPageSize(current, pageSize)
   }
-  /**
-   * sort 触发
-   *
-   * @memberof AvailableTable
-   */
-  public handleTableChange = (pagination, filters, sorter) => {
-    // console.log(sorter)
-    const { onSortChange } = this.props
-    onSortChange(sorter)
-  }
-  /**
-   * 翻页触发
-   *
-   * @memberof AvailableTable
-   */
+  public handleTableChange = (pagination, filters, sorter) => {}
   public onChange = page => {
-    console.log(page)
-    this.setState({
-      current: page
-    })
+    const store = this.props[STORE_AVAILABLELIST] as AvailableListStore
+    store.changePage(page)
   }
-  public componentWillMount() {
-    // 此处可以加载请求
-  }
-  public componentDidMount() {
-    // 此处可以处理带ref的
+  public showTotal = total => {
+    return `Total ${total} items`
   }
   public render() {
-    const { dataSource, current, total } = this.state
+    const store = this.props[STORE_AVAILABLELIST] as AvailableListStore
+    const { data, currentPage, total } = store
+    const dataSource = mobx.toJS(data)
     return (
       <div>
         <Table
@@ -114,14 +108,16 @@ export default class AvailableTable extends React.Component<
           pagination={false}
           dataSource={dataSource}
           columns={columns}
+          rowKey="id"
         />
         <br />
         <Pagination
           showSizeChanger
           onChange={this.onChange}
           onShowSizeChange={this.onShowSizeChange}
-          current={current}
+          current={currentPage}
           total={total}
+          showTotal={this.showTotal}
         />
       </div>
     )
