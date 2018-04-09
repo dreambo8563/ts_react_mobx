@@ -1,7 +1,15 @@
 .bg {
-  background-color: rgb(249, 249, 249);
   width: 100%;
   height: 100vh;
+  background-color: white;
+}
+.fullWidth {
+  /* border: solid 1px grey; */
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 8px 26px 6px rgba(214, 210, 214, 0.9);
+  -moz-box-shadow: 3px 8px 26px 6px rgba(214, 210, 214, 0.9);
+  box-shadow: 3px 8px 26px 6px rgba(214, 210, 214, 0.9);
+  background-color: rgb(249, 249, 249);
 }
 .fullWidth :global(canvas) {
   width: 100% !important;

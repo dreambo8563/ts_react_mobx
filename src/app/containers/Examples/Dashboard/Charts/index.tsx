@@ -169,9 +169,12 @@ export default class Charts extends React.Component<ChartsProps, ChartsState> {
             />
           </Chart>
         </Row>
+        <br/>
+        <br/>
         <Row type="flex" justify="space-between" align="bottom">
-          <Col span={12}>
+          <Col span={11}>
             <Chart
+              className={style.fullWidth}
               height={400}
               data={this.dv1}
               padding={[80, 100, 80, 80]}
@@ -214,8 +217,9 @@ export default class Charts extends React.Component<ChartsProps, ChartsState> {
               </Geom>
             </Chart>
           </Col>
-          <Col span={12}>
+          <Col span={11}>
             <Chart
+              className={style.fullWidth}
               width={400}
               height={400}
               data={this.data3}
