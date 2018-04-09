@@ -1,9 +1,11 @@
 import { Button, Dropdown, Icon, Menu, Popover, Row, Table, Tag } from "antd"
 import cx from "classnames"
-import { observer } from "mobx-react"
+import { inject, observer } from "mobx-react"
 import React from "react"
 import av from "../../../../../assets/img/example/av.jpeg"
 
+import { STORE_APP } from "../../../../constants/stores"
+import { AppStore } from "../../../../stores"
 import style from "./style.css"
 
 // 如果需要用到css
@@ -12,7 +14,7 @@ export interface ContactsListProps {}
 export interface ContactsListState {}
 
 // 如果要注入store
-// @inject(STORE_TODO, STORE_ROUTER)
+@inject(STORE_APP)
 @observer
 export default class ContactsList extends React.Component<
   ContactsListProps,
@@ -31,6 +33,7 @@ export default class ContactsList extends React.Component<
       </p>
     </div>
   )
+
   public data = [
     {
       key: "1",
@@ -105,7 +108,11 @@ export default class ContactsList extends React.Component<
       className: style.columnHead,
       key: "tags",
       render: (text, record) =>
-        (record.tags || []).map((t, i) => <Tag key={i}>{t}</Tag>)
+        (record.tags || []).map((t, i) => (
+          <Tag className={style.tag} key={i}>
+            {t}
+          </Tag>
+        ))
     },
     {
       title: "CREATED DATE",
@@ -119,7 +126,10 @@ export default class ContactsList extends React.Component<
       className: style.columnHead,
       render: (text, record) => (
         <Popover placement="bottom" content={this.rowOperation} trigger="click">
-          <Icon className={style.rowOperation} type="ellipsis" />
+          <Icon
+            className={cx(style.rowOperation, style.pointer)}
+            type="ellipsis"
+          />
         </Popover>
       )
     }
@@ -147,6 +157,29 @@ export default class ContactsList extends React.Component<
       </Menu.Item>
       <Menu.Item key="6">
         <span className={style.menuItemPad}>Facebook</span>
+      </Menu.Item>
+    </Menu>
+  )
+  public sortMenu = (
+    <Menu>
+      <Menu.Item key="0">
+        <span className={cx(style.selectedColor, style.menuItemPad)}>
+          Date Created
+        </span>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="1">
+        <span className={style.menuItemPad}>Score</span>
+      </Menu.Item>
+
+      <Menu.Item key="3">
+        <span className={style.menuItemPad}>First Name</span>
+      </Menu.Item>
+      <Menu.Item key="4">
+        <span className={style.menuItemPad}>Last Name</span>
+      </Menu.Item>
+      <Menu.Item key="5">
+        <span className={style.menuItemPad}>Email Address</span>
       </Menu.Item>
     </Menu>
   )
@@ -188,6 +221,8 @@ export default class ContactsList extends React.Component<
   }
   public componentDidMount() {
     // 此处可以处理带ref的
+    const app = this.props[STORE_APP] as AppStore
+    app.setTitle("Contacts List")
   }
   public render() {
     return (
@@ -206,7 +241,7 @@ export default class ContactsList extends React.Component<
             <span className={cx(style.smallLable, style.leftM8, style.rightM8)}>
               Sort by:
             </span>
-            <Dropdown overlay={this.menu} trigger={["click"]}>
+            <Dropdown overlay={this.sortMenu} trigger={["click"]}>
               <span className={cx(style.smallBlack, style.rightM8)}>
                 Date Created<Icon type="down" />
               </span>
@@ -224,7 +259,8 @@ export default class ContactsList extends React.Component<
                     style.headerHeight,
                     style.smallLable,
                     style.noBorder,
-                    style.leftM8
+                    style.leftM8,
+                    style.hoverBtn
                   )}
                 >
                   <Icon className={style.fz20} type="bars" />
@@ -235,7 +271,8 @@ export default class ContactsList extends React.Component<
                   style.headerHeight,
                   style.smallLable,
                   style.noBorder,
-                  style.leftM8
+                  style.leftM8,
+                  style.hoverBtn
                 )}
               >
                 Filter <i className={cx(style.fz20, "fa fa-filter")} />
@@ -245,7 +282,9 @@ export default class ContactsList extends React.Component<
                 content={this.addContactOps}
                 trigger="click"
               >
-                <Button className={cx(style.btnBG, style.leftM8)}>
+                <Button
+                  className={cx(style.btnBG, style.leftM8, style.primaryHover)}
+                >
                   <i className={cx(style.fz20, "fa fa-user-plus")} /> Add
                   Contact
                 </Button>
@@ -261,10 +300,13 @@ export default class ContactsList extends React.Component<
                     style.smallLable,
                     style.noBorder,
                     style.leftM8,
-                    style.lightBlueBG
+                    style.hoverBtn
                   )}
                 >
-                  <Icon className={style.fz20} type="ellipsis" />
+                  <Icon
+                    className={cx(style.rowOperation, style.primayColor)}
+                    type="ellipsis"
+                  />
                 </Button>
               </Popover>
             </Row>

@@ -11,6 +11,7 @@
 .title {
   color: rgb(118, 99, 238);
   font-size: 32px;
+  cursor: pointer;
 }
 
 .smallLable {
@@ -19,6 +20,7 @@
 
 .smallBlack {
   color: rgb(37, 50, 56);
+  cursor: pointer;
 }
 
 .headerHeight {
@@ -80,4 +82,25 @@
 .rowOperation {
   font-size: 32px;
   font-weight: bolder;
+}
+.hoverBtn:hover,
+.hoverBtn:focus {
+  background-color: rgb(221, 238, 249);
+  color: white;
+  border-width: 0px;
+}
+.primaryHover:hover,
+.primaryHover:focus {
+  color: rgb(39, 169, 247);
+  border-color: transparent;
+}
+.pointer {
+  cursor: pointer;
+}
+.tag {
+  background-color: rgb(244, 248, 249);
+  color: rgb(160, 176, 185);
+}
+.primayColor {
+  color: rgb(39, 169, 247);
 }
