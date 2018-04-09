@@ -1,0 +1,8 @@
+.bg {
+  background-color: rgb(249, 249, 249);
+  width: 100%;
+  height: 100vh;
+}
+.fullWidth :global(canvas) {
+  width: 100% !important;
+}

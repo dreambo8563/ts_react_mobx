@@ -105,6 +105,9 @@ export class SidebarLayout extends React.Component<
                 <Menu.Item key="contacts">
                   <Link to="/examples/contacts/list">Contacts</Link>
                 </Menu.Item>
+                <Menu.Item key="dashboard">
+                  <Link to="/examples/dashboard/charts">Dashboard</Link>
+                </Menu.Item>
               </SubMenu>
               <SubMenu
                 key="courses"
