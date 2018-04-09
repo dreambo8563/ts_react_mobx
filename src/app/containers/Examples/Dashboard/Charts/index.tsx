@@ -13,6 +13,7 @@ import {
   Tooltip,
   View
 } from "BizCharts"
+import cx from "classnames"
 import { inject, observer } from "mobx-react"
 import React from "react"
 import { STORE_APP } from "../../../../constants/stores"
@@ -128,8 +129,9 @@ export default class Charts extends React.Component<ChartsProps, ChartsState> {
       dimension: "type",
       as: "percent"
     })
-
-    this.forceUpdate()
+    setTimeout(() => {
+      this.forceUpdate()
+    }, 20)
   }
   public render() {
     return (
@@ -169,10 +171,10 @@ export default class Charts extends React.Component<ChartsProps, ChartsState> {
             />
           </Chart>
         </Row>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Row type="flex" justify="space-between" align="bottom">
-          <Col span={11}>
+          <Col span={8}>
             <Chart
               className={style.fullWidth}
               height={400}
@@ -217,13 +219,13 @@ export default class Charts extends React.Component<ChartsProps, ChartsState> {
               </Geom>
             </Chart>
           </Col>
-          <Col span={11}>
+          <Col span={14}>
             <Chart
-              className={style.fullWidth}
+              className={cx(style.fullWidth, style.autoHeight)}
               width={400}
               height={400}
               data={this.data3}
-              padding={40}
+              padding={60}
               forceFit
             >
               <Coord type="theta" radius={0.8} />
@@ -277,7 +279,10 @@ export default class Charts extends React.Component<ChartsProps, ChartsState> {
                   />
                 </Geom>
                 <Guide>
-                  <Text position={["50%", "50%"]} content="24 hours" />
+                  <Text
+                    position={["50%", "50%"]}
+                    content="24 hours"
+                  />
                 </Guide>
               </View>
               <View data={this.userDv}>

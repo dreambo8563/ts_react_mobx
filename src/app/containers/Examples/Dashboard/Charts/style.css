@@ -12,5 +12,16 @@
   background-color: rgb(249, 249, 249);
 }
 .fullWidth :global(canvas) {
-  width: 100% !important;
+  width: auto !important;
+  max-width: 100%;
 }
+.autoHeight :global(canvas) {
+  height: auto !important;
+}
+/* 
+.chartText {
+  line-height: 240px;
+  font-size: 48px;
+  fill: #262626;
+  text-align: center;
+} */
