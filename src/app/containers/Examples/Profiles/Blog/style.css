@@ -1,0 +1,149 @@
+:global(.ant-layout-content) {
+  background-color: rgb(234, 238, 241) !important;
+  height: 100vh;
+}
+.headerFrame {
+  background-color: white;
+  height: 300px;
+  padding: 20px;
+}
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+
+.elipBtn {
+  border-radius: 25px;
+  width: 100px;
+}
+
+.followBtn {
+  background-color: rgb(34, 170, 235);
+  color: white;
+}
+
+.msgBtn {
+  background-color: rgb(103, 185, 47);
+  color: white;
+}
+.name {
+  color: rgb(24, 24, 24);
+  font-size: 28px;
+}
+.position {
+  color: rgb(26, 171, 237);
+}
+
+.comText {
+  color: rgb(76, 98, 119);
+  /* font-size: 18px; */
+}
+.lightLabel {
+  color: rgb(161, 173, 185);
+}
+
+.num {
+  color: rgb(40, 88, 174);
+  font-size: 28px;
+  text-align: center;
+}
+
+.subTitle {
+  font-size: 24px;
+  color: rgb(36, 44, 43);
+}
+
+.aboutTile {
+  height: 300px;
+  background-color: white;
+  text-align: center;
+  padding: 30px;
+}
+.aboutTile .title {
+  font-size: 20px;
+  color: rgb(77, 98, 125);
+}
+.aboutTile .uint {
+  color: rgb(91, 121, 186);
+}
+
+.fz90 {
+  font-size: 90px;
+}
+.fz20 {
+  font-size: 20px;
+}
+
+.numBlue {
+  color: rgb(36, 169, 236);
+}
+.numGreen {
+  color: rgb(103, 187, 47);
+}
+.greenCir {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(103, 187, 47);
+  border-radius: 50%;
+  line-height: 100px;
+  font-size: 26px;
+  color: white;
+}
+.blueCir {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(36, 169, 236);
+  border-radius: 50%;
+  line-height: 100px;
+  font-size: 26px;
+  color: white;
+}
+
+.greenSmall {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(103, 187, 47);
+}
+.blueSmall {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(36, 169, 236);
+}
+.mr20 {
+  margin-right: 20px;
+}
+
+.midFrame {
+  padding: 20px;
+  background-color: white;
+}
+
+.midFrame img {
+  width: 100%;
+}
+
+.midFrame .title {
+  color: rgb(34, 163, 228);
+  font-size: 18px;
+}
+
+.fz18 {
+  font-size: 18px;
+}
+
+.followBtn2 {
+  color: rgb(34, 170, 235);
+  background-color: white;
+}
+.height40 {
+  height: 40px;
+}

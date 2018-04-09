@@ -60,6 +60,14 @@ export default class App extends React.Component {
             <Switch>
               <Redirect exact from="/" to="/courses/subscribe/list" />
               <Route
+                path="/examples/profiles/blog"
+                component={loadComponentWithSidebar(() =>
+                  import("./containers/Examples/Profiles/Blog").then(
+                    (module: any) => module.default
+                  )
+                )}
+              />
+              <Route
                 path="/examples/contacts/list"
                 component={loadComponentWithSidebar(() =>
                   import("./containers/Examples/Contacts/List").then(
@@ -67,7 +75,7 @@ export default class App extends React.Component {
                   )
                 )}
               />
-               <Route
+              <Route
                 path="/examples/dashboard/charts"
                 component={loadComponentWithSidebar(() =>
                   import("./containers/Examples/Dashboard/Charts").then(
