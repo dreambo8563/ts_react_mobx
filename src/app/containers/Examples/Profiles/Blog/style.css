@@ -147,3 +147,54 @@
 .height40 {
   height: 40px;
 }
+.listItem {
+  background-color: white;
+  padding: 15px;
+  position: relative;
+}
+
+.fz44 {
+  font-size: 44px;
+}
+.selectedItem .cardOps {
+  color: rgb(34, 170, 235);
+}
+.bottomCard {
+  position: absolute;
+  top: -50px;
+  right: -32%;
+  width: 30%;
+  height: 320px;
+  background-color: white;
+  display: none;
+  text-align: center;
+  border-radius: 10px;
+}
+.selectedItem .bottomCard {
+  display: block;
+}
+.bottomCard .header {
+  height: 220px;
+  padding: 10px;
+  background-color: rgb(34, 170, 235);
+  border-radius: 10px 10px 0 0;
+}
+
+.bottomCard .header img {
+  width: 50%;
+  border-radius: 40%;
+}
+.bottomCard .header .name {
+  color: white;
+  font-size: 24px;
+}
+.bottomCard .header .title {
+  color: white;
+  font-size: 18px;
+}
+.bottomCard .cardInfoItem {
+  width: 20%;
+}
+.feedSection :global(.ant-spin-container) {
+  overflow: visible;
+}

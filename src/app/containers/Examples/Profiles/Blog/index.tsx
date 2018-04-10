@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "antd"
+import { Avatar, Button, Col, Icon, List, Row } from "antd"
 import cx from "classnames"
 import { observer } from "mobx-react"
 import React from "react"
@@ -278,14 +278,85 @@ export default class Blog extends React.Component<BlogState, BlogState> {
                 </Row>
               </Col>
             </Row>
+            <br />
+            <Row type="flex" justify="center">
+              <Icon
+                className={cx(style.followBtn2, style.fz20)}
+                type="ellipsis"
+              />
+            </Row>
           </div>
         </section>
         <br />
         <br />
-        {/* <section>
+        <section className={style.feedSection}>
           <div className={style.subTitle}>Feed</div>
           <br />
-        </section> */}
+          <Row gutter={16}>
+            <Col span={16}>
+              <List
+                itemLayout="horizontal"
+                dataSource={[1, 2, 3]}
+                renderItem={item => (
+                  <List.Item
+                    className={cx({
+                      [style.listItem]: true,
+                      [style.selectedItem]: parseInt(item, 10) === 1
+                    })}
+                  >
+                    <List.Item.Meta
+                      avatar={<Avatar size="large" src={av} />}
+                      title={<a href="https://ant.design">xxxx</a>}
+                      description="Ant Design, a design language for background applications,
+                       is refined by Ant UED Team"
+                    />
+                    <Row type="flex" justify="center" align="middle">
+                      <Button
+                        className={cx(
+                          style.mr20,
+                          style.elipBtn,
+                          style.followBtn
+                        )}
+                      >
+                        follow
+                      </Button>
+                      <Icon
+                        className={cx(style.fz44, style.comText, style.cardOps)}
+                        type="ellipsis"
+                      />
+                    </Row>
+                    <div className={style.bottomCard}>
+                      <div className={style.header}>
+                        <img src={av} alt="" />
+                        <div className={style.name}>Vincent Guo</div>
+                        <div className={style.title}>Full Stack Developer</div>
+                      </div>
+                      <br />
+                      <Row type="flex" justify="space-around" align="middle">
+                        <div className={style.cardInfoItem}>
+                          <div className={style.comText}>Followers</div>
+                          <div className={style.num}>50</div>
+                        </div>
+                        <div className={style.cardInfoItem}>
+                          <div className={style.comText}>Following</div>
+                          <div className={style.num}>40</div>
+                        </div>
+                        <div className={style.cardInfoItem}>
+                          <div className={style.comText}>Questions</div>
+                          <div className={style.num}>32</div>
+                        </div>
+                        <div className={style.cardInfoItem}>
+                          <div className={style.comText}>Answers</div>
+                          <div className={style.num}>30</div>
+                        </div>
+                      </Row>
+                    </div>
+                  </List.Item>
+                )}
+              />
+            </Col>
+          </Row>
+        </section>
       </div>
     )
   }
