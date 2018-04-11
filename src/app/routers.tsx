@@ -58,7 +58,7 @@ export default class App extends React.Component {
         <Root>
           <Router history={history}>
             <Switch>
-              <Redirect exact from="/" to="/courses/subscribe/list" />
+              <Redirect exact from="/" to="/examples/profiles/blog" />
               <Route
                 path="/examples/profiles/blog"
                 component={loadComponentWithSidebar(() =>

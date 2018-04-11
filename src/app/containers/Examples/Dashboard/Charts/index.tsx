@@ -1,5 +1,5 @@
 import { View as DataView } from "@antv/data-set"
-import DataSet from "@antv/data-set"
+// import DataSet from "@antv/data-set"
 import { Col, Row } from "antd"
 import {
   Axis,

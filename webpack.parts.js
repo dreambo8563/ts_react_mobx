@@ -5,6 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CleanWebpackPlugin = require("clean-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const CompressionPlugin = require("compression-webpack-plugin")
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const tsImportPluginFactory = require("ts-import-plugin")
 const cssnano = require("cssnano")
 const pkgPath = path.join(__dirname, "package.json")
@@ -290,11 +291,12 @@ exports.clean = function(paths) {
 exports.minifyJavaScript = function({ useSourceMap }) {
   return {
     plugins: [
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: useSourceMap,
-        compress: {
-          warnings: false
-        }
+      new UglifyJsPlugin({
+        parallel: true,
+        sourceMap: useSourceMap
+        // compress: {
+        //   warnings: false
+        // }
       }),
       new CompressionPlugin({
         asset: "[path].gz[query]",

@@ -32,14 +32,14 @@ const common = merge([
     plugins: [
       new HtmlWebpackPlugin({
         template: "template.html",
-        title: "Tools后台管理系统",
+        title: "react+mobx+ts",
         minify: {
           collapseWhitespace: true,
           collapseBooleanAttributes: true,
           removeEmptyAttributes: true
         },
         appMountId: "app", // Generate #app where to mount
-        favicon: "favicon.png",
+        favicon: "favicon.ico",
         mobile: true, // Scale page on mobile
         inject: true // html-webpack-template requires this to work
       })
