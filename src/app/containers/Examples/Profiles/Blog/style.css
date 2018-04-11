@@ -198,3 +198,13 @@
 .feedSection :global(.ant-spin-container) {
   overflow: visible;
 }
+
+.shadowBox {
+  -webkit-box-shadow: -4px 19px 58px -13px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 19px 58px -13px rgba(0, 0, 0, 0.75);
+  box-shadow: -4px 19px 58px -13px rgba(0, 0, 0, 0.75);
+}
+
+.pad10{
+  padding: 10px;
+}

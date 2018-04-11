@@ -47,7 +47,7 @@ export default class Blog extends React.Component<BlogState, BlogState> {
   public render() {
     return (
       <div className={style.frame}>
-        <div className={style.headerFrame}>
+        <div className={cx(style.headerFrame, style.shadowBox)}>
           <Row type="flex" justify="space-between" align="top">
             <Col span={8}>
               <Row type="flex" justify="space-around" align="middle">
@@ -94,7 +94,7 @@ export default class Blog extends React.Component<BlogState, BlogState> {
           <div className={style.subTitle}>About</div>
           <br />
           <Row type="flex" justify="space-between" align="top">
-            <Col span={6}>
+            <Col className={style.shadowBox} span={6}>
               <div className={style.aboutTile}>
                 <div className={style.title}>Sailed</div>
 
@@ -117,7 +117,7 @@ export default class Blog extends React.Component<BlogState, BlogState> {
                 </Row>
               </div>
             </Col>
-            <Col span={6}>
+            <Col className={style.shadowBox} span={6}>
               <div className={style.aboutTile}>
                 <div className={style.title}>Seatime</div>
                 <div>
@@ -139,7 +139,7 @@ export default class Blog extends React.Component<BlogState, BlogState> {
                 </Row>
               </div>
             </Col>
-            <Col span={6}>
+            <Col className={style.shadowBox} span={6}>
               <div className={style.aboutTile}>
                 <div className={style.title}>Q & A</div>
                 <Row gutter={16} type="flex" justify="center">
@@ -176,106 +176,114 @@ export default class Blog extends React.Component<BlogState, BlogState> {
           <br />
           <div className={style.midFrame}>
             <Row type="flex" justify="space-between" align="top">
-              <Col span={6}>
+              <Col className={style.shadowBox} span={6}>
                 <img src={ship1} alt="" />
                 <br />
-                <br />
-                <div className={style.title}>Ship Navigation</div>
                 <br />
 
-                <div className={cx(style.comText, style.fz18)}>
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum."
-                </div>
-                <hr />
-                <Row type="flex" justify="space-between" align="top">
-                  <div>
-                    <div className={style.comText}>Followers</div>
-                    <div className={style.num}>112</div>
-                  </div>
-                  <Button
-                    className={cx(
-                      style.followBtn2,
-                      style.elipBtn,
-                      style.height40
-                    )}
-                  >
-                    follow
-                  </Button>
-                </Row>
-              </Col>
-              <Col span={6}>
-                <img src={ship1} alt="" />
-                <br />
-                <br />
-                <div className={style.title}>Ship Navigation</div>
-                <br />
-                <div className={cx(style.comText, style.fz18)}>
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum."
-                </div>
-                <hr />
-                <Row type="flex" justify="space-between" align="top">
-                  <div>
-                    <div className={style.comText}>Followers</div>
-                    <div className={style.num}>112</div>
-                  </div>
-                  <Button
-                    className={cx(
-                      style.followBtn2,
-                      style.elipBtn,
-                      style.height40
-                    )}
-                  >
-                    follow
-                  </Button>
-                </Row>
-              </Col>
-              <Col span={6}>
-                <img src={ship1} alt="" />
-                <br />
-                <br />
-                <div className={style.title}>Ship Navigation</div>
+                <div className={style.pad10}>
+                  <div className={style.title}>Ship Navigation</div>
 
-                <br />
-                <div className={cx(style.comText, style.fz18)}>
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum."
-                </div>
-                <hr />
-                <Row type="flex" justify="space-between" align="top">
-                  <div>
-                    <div className={style.comText}>Followers</div>
-                    <div className={style.num}>112</div>
+                  <br />
+                  <div className={cx(style.comText, style.fz18)}>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum."
                   </div>
-                  <Button
-                    className={cx(
-                      style.followBtn2,
-                      style.elipBtn,
-                      style.height40
-                    )}
-                  >
-                    follow
-                  </Button>
-                </Row>
+                  <hr />
+                  <Row type="flex" justify="space-between" align="top">
+                    <div>
+                      <div className={style.comText}>Followers</div>
+                      <div className={style.num}>112</div>
+                    </div>
+                    <Button
+                      className={cx(
+                        style.followBtn2,
+                        style.elipBtn,
+                        style.height40
+                      )}
+                    >
+                      follow
+                    </Button>
+                  </Row>
+                </div>
+              </Col>
+              <Col className={style.shadowBox} span={6}>
+                <img src={ship1} alt="" />
+                <br />
+                <br />
+                <div className={style.pad10}>
+                  <div className={style.title}>Ship Navigation</div>
+
+                  <br />
+                  <div className={cx(style.comText, style.fz18)}>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum."
+                  </div>
+                  <hr />
+                  <Row type="flex" justify="space-between" align="top">
+                    <div>
+                      <div className={style.comText}>Followers</div>
+                      <div className={style.num}>112</div>
+                    </div>
+                    <Button
+                      className={cx(
+                        style.followBtn2,
+                        style.elipBtn,
+                        style.height40
+                      )}
+                    >
+                      follow
+                    </Button>
+                  </Row>
+                </div>
+              </Col>
+              <Col className={style.shadowBox} span={6}>
+                <img src={ship1} alt="" />
+                <br />
+                <br />
+                <div className={style.pad10}>
+                  <div className={style.title}>Ship Navigation</div>
+
+                  <br />
+                  <div className={cx(style.comText, style.fz18)}>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum."
+                  </div>
+                  <hr />
+                  <Row type="flex" justify="space-between" align="top">
+                    <div>
+                      <div className={style.comText}>Followers</div>
+                      <div className={style.num}>112</div>
+                    </div>
+                    <Button
+                      className={cx(
+                        style.followBtn2,
+                        style.elipBtn,
+                        style.height40
+                      )}
+                    >
+                      follow
+                    </Button>
+                  </Row>
+                </div>
               </Col>
             </Row>
             <br />
@@ -325,7 +333,7 @@ export default class Blog extends React.Component<BlogState, BlogState> {
                         type="ellipsis"
                       />
                     </Row>
-                    <div className={style.bottomCard}>
+                    <div className={cx(style.bottomCard, style.shadowBox)}>
                       <div className={style.header}>
                         <img src={av} alt="" />
                         <div className={style.name}>Vincent Guo</div>
