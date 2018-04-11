@@ -75,14 +75,14 @@ export default class App extends React.Component {
                   )
                 )}
               />
-              {/* <Route
+              <Route
                 path="/examples/dashboard/charts"
                 component={loadComponentWithSidebar(() =>
                   import("./containers/Examples/Dashboard/Charts").then(
                     (module: any) => module.default
                   )
                 )}
-              /> */}
+              />
               <Route
                 path="/sales/orders/list"
                 component={loadComponentWithSidebar(() =>

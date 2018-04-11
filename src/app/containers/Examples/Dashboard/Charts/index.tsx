@@ -1,4 +1,4 @@
-import { View as DataView } from "@antv/data-set"
+import { View as DataView } from "@antv/data-set/build/data-set.js"
 // import DataSet from "@antv/data-set"
 import { Col, Row } from "antd"
 import {
