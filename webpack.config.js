@@ -11,7 +11,7 @@ const isProduction = process.argv.indexOf("-p") >= 0
 
 const PATHS = {
   app: path.join(__dirname, "src"),
-  build: path.join(__dirname, '../',"tmp")
+  build: path.join(__dirname, "../", "tmp")
 }
 
 const common = merge([
@@ -42,10 +42,10 @@ const common = merge([
         favicon: "favicon.ico",
         mobile: true, // Scale page on mobile
         inject: true // html-webpack-template requires this to work
-      }),
-        new OfflinePlugin({
-          externals: ["https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff"]
-        })
+      })
+      // new OfflinePlugin({
+      //   externals: ["https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff"]
+      // })
     ],
     resolve: {
       extensions: [".js", ".ts", ".tsx", ".css"],

@@ -1,3 +1,3 @@
 import "./app"
 // tslint:disable-next-line
-require("offline-plugin/runtime").install()
+// require("offline-plugin/runtime").install()
