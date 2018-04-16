@@ -1,3 +1,5 @@
 import "./app"
-// tslint:disable-next-line
-// require("offline-plugin/runtime").install()
+if (process.env.NODE_ENV === "production") {
+  // tslint:disable-next-line
+  require("offline-plugin/runtime").install()
+}

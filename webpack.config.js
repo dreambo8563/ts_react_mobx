@@ -43,9 +43,6 @@ const common = merge([
         mobile: true, // Scale page on mobile
         inject: true // html-webpack-template requires this to work
       })
-      // new OfflinePlugin({
-      //   externals: ["https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff"]
-      // })
     ],
     resolve: {
       extensions: [".js", ".ts", ".tsx", ".css"],
@@ -84,6 +81,9 @@ module.exports = function() {
           filename: "[name].[chunkhash].js"
         },
         plugins: [
+          new OfflinePlugin({
+            externals: ["https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff"]
+          }),
           new webpack.HashedModuleIdsPlugin(),
           new webpack.optimize.AggressiveMergingPlugin(),
           new webpack.optimize.ModuleConcatenationPlugin()
