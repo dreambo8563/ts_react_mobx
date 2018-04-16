@@ -30,6 +30,9 @@ const common = merge([
       publicPath: "/"
     },
     plugins: [
+      // new OfflinePlugin({
+      //   externals: ["https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff"]
+      // }),
       new HtmlWebpackPlugin({
         template: "template.html",
         title: "react+mobx+ts",
@@ -81,9 +84,6 @@ module.exports = function() {
           filename: "[name].[chunkhash].js"
         },
         plugins: [
-          new OfflinePlugin({
-            externals: ["https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff"]
-          }),
           new webpack.HashedModuleIdsPlugin(),
           new webpack.optimize.AggressiveMergingPlugin(),
           new webpack.optimize.ModuleConcatenationPlugin()
