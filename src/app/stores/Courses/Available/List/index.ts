@@ -1,5 +1,5 @@
 import { action, computed, observable, runInAction } from "mobx"
-import * as moment from "moment"
+import moment from "moment"
 
 import { availableTimeListAPI } from "../../../../constants/api"
 import { httpGet } from "../../../../utils/http"
