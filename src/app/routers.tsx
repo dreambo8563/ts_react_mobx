@@ -51,6 +51,9 @@ const rootStores = {
   [STORE_MONITORERROR]: courseErrorStore,
   [STORE_DINGGROUP]: dingDemoGroupStore
 }
+
+
+
 export default class App extends React.Component {
   public render() {
     return (
