@@ -1,5 +1,7 @@
 ## Setup
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dreambo8563/ts_react_mobx.svg)](https://greenkeeper.io/)
+
 ```
 $ npm install
 ```
